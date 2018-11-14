@@ -5,10 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TobiiTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <WrapPanel Orientation="Vertical">
-        <Label x:Name="lbl1" FontSize="20">123</Label>
-        <Label x:Name="lbl2" FontSize="20">123</Label>
-        <Label x:Name="lbl3" FontSize="20">123</Label>
-    </WrapPanel>
+        Title="MainWindow" Height="648.9" Width="952.778">
+
+    <Grid Margin="0,0,0.4,0.2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" Height="56.2" Background="#FFE4DEDE">
+                <MenuItem Header="Preference" FontSize="22" Height="48.7" Width="136.373">
+                    <MenuItem Name="SetScreenshotSize" Header="Set screenshot size" Click="menueOpen_Click0">
+                        <MenuItem Name="Size1" Header="Small" Click="menueOpen_Click1" FontSize="16"></MenuItem>
+                        <MenuItem Name="Size2" Header="Medium" Click="menueOpen_Click2" FontSize="16"></MenuItem>
+                        <MenuItem Name="Size3" Header="Large" Click="menueOpen_Click3" FontSize="16"></MenuItem>
+
+                    </MenuItem>
+                    <MenuItem Name="SetKey" Header="Set screenshot key" Click="menueOpen_Click4">
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="About" FontSize="22" Height="56.2" Width="86.607" RenderTransformOrigin="0.925,0.441"></MenuItem>
+                <MenuItem Header="Help" FontSize="22" RenderTransformOrigin="1.086,100.566" Width="77.803"/>
+            </Menu>
+        </DockPanel>
+
+        <!--Label x:Name="lbl1" FontSize="20" Margin="0,0,1,271.2" Grid.RowSpan="3">123</>
+        <Label x:Name="lbl2" FontSize="20" Margin="1,29.4,0,271.2" Grid.Row="2">123</Label>
+        <Label x:Name="lbl3" FontSize="20" Margin="0,64.4,1,225.4" Grid.Row="2">123</Label!-->
+
+
+        <!--Source language list-->
+        <ComboBox x:Name="comboBox1" SelectedIndex="0" HorizontalAlignment="Left" Margin="33.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="307.4" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
+            <ComboBoxItem Content="Select Source Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="English"  HorizontalAlignment="Left" Width="118.4"/>
+        </ComboBox>
+
+        <Button x:Name="button1" Content="+" HorizontalAlignment="Left" Margin="341,67.4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="51" Height="50" FontSize="35"/>
+
+        <!--Target language list-->
+        <ComboBox x:Name="comboBox2" SelectedIndex="0" HorizontalAlignment="Left" Margin="527.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="378" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
+            <ComboBoxItem Content="Select Target Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="English" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="Chinese" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="French" HorizontalAlignment="Left" Width="118.4"/>
+            <!--ScrollBar x:Name="scrollBar" HorizontalAlignment="Left" Margin="794,248.6,0,0" Grid.Row="2" VerticalAlignment="Top"/!-->
+        </ComboBox>
+        <!--Translate Text Area!-->
+
+        <RichTextBox x:Name="richTextBox1" HorizontalAlignment="Left" Height="182" Margin="34,141.4,0,-1" Grid.Row="2" VerticalAlignment="Top" Width="358" TextChanged="richTextBox1_TextChanged" FontSize="24">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Text"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+        <RichTextBox x:Name="richTextBox2" HorizontalAlignment="Left" Height="182" Margin="528,141.4,0,-2.6" Grid.Row="2" VerticalAlignment="Top" Width="378" FontSize="24">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Translate:"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Separator HorizontalAlignment="Left" Height="192" Margin="315,103.4,0,-34.6" Grid.Row="2" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.528,0.693">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.847"/>
+                    <TranslateTransform X="-39.234" Y="-34.772"/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+        <Image x:Name="image1" HorizontalAlignment="Left" Height="164" Source="Ateam-square.png" Margin="680,375.4,0,-270.6" Grid.Row="2" VerticalAlignment="Top" Width="218">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Ateam-square.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image x:Name="image2" HorizontalAlignment="Left" Height="144" Source="tobii eyex.png" Margin="0,400.4,0,-226.8" Grid.Row="2" VerticalAlignment="Top" Width="522" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.323"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="tobii eyex.png"/>
+            </Image.OpacityMask>
+        </Image>
+
+    </Grid>
+
 </Window>
