@@ -32,7 +32,7 @@ namespace TobiiTest
             _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             _timer.Enabled = true;
             //OCRUtil.RecognizeImage("n48.jpg");
-            OCRUtil.RecognizeImage("Screen718973825.639451.png");
+            //OCRUtil.RecognizeImage("Screen718973825.639451.png");
         }
         
         private void OnTimedEvent(object source, ElapsedEventArgs e)
