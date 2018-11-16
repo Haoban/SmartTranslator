@@ -66,7 +66,7 @@ namespace TobiiTest
 
         }
 
-        /**private void menueOpen_Click0(object sender, RoutedEventArgs e)
+        private void menueOpen_Click0(object sender, RoutedEventArgs e)
         {
 
         }
@@ -89,6 +89,6 @@ namespace TobiiTest
         private void menueOpen_Click4(object sender, RoutedEventArgs e)
         {
 
-        }*/
+        }
     }
 }
