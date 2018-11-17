@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Translator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,9 +86,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="C:\Users\admin\Downloads\googletranslator_src\GoogleTranslator\Translator.cs">
-      <Link>Translator.cs</Link>
     </Compile>
     <Compile Include="OCRUtil.cs" />
     <Compile Include="ScreenshotUtil.cs" />
