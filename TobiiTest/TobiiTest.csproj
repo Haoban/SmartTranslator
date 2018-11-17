@@ -91,6 +91,7 @@
     <Compile Include="Preference.xaml.cs">
       <DependentUpon>Preference.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Translator.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,7 +108,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="googletranslate.cs" />
     <Compile Include="OCRUtil.cs" />
     <Compile Include="ScreenshotUtil.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -150,13 +150,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="x86\Newtonsoft.Json.dll" />
     <Resource Include="Ateam-square.png" />
     <Resource Include="tobiieyex.png" />
-    <Content Include="gettk.js" />
     <Content Include="x64\liblept172.dll" />
     <Content Include="x64\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="x64\Newtonsoft.Json.dll" />
     <Content Include="x86\liblept172.dll" />
     <Content Include="x86\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
