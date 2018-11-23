@@ -17,9 +17,9 @@ namespace TobiiTest
     /// <summary>
     /// Setkey.xaml 的交互逻辑
     /// </summary>
-    public partial class Setkey : Window
+    public partial class Preference : Window
     {
-        public Setkey()
+        public Preference()
         {
             InitializeComponent();
         }

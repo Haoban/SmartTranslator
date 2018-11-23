@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="54" Background="#FFECE7E7" Margin="0,0,41,0">
-                <MenuItem Header="Preference" FontSize="22" Height="48.7" Width="136.373"></MenuItem>
-                <MenuItem Header="About" FontSize="22" Height="56.2" Width="86.607" RenderTransformOrigin="0.925,0.441"></MenuItem>
+                <MenuItem Header="Preferences" FontSize="22" Height="48.7" Width="136.373" Click="Preferences_Click"></MenuItem>
+                <MenuItem Header="About" FontSize="22" Height="56.2" Width="86.607" RenderTransformOrigin="0.925,0.441" Click="About_Click"></MenuItem>
                 <MenuItem Header="Help" FontSize="22" Height="48.7" Width="77.803">
                     <MenuItem Name="Search" Header="Search" >
                          <TextBox x:Name="SearchBox"  TabIndex="0" BorderThickness="1" Margin="2" Height="23" HorizontalAlignment="Left" Width="110" Grid.Column="0"   ToolTipService.ToolTip="Please input keywords" ToolTipService.InitialShowDelay="1" ToolTipService.Placement="MousePoint">
