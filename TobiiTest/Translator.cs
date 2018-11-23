@@ -279,17 +279,10 @@ namespace TobiiTest
 
         #region Fields
 
-<<<<<<< HEAD
-            /// <summary>
-            /// The language to translation mode map.
-            /// </summary>
-            private static Dictionary<string, string> _languageModeMap;
-=======
         /// <summary>
         /// The language to translation mode map.
         /// </summary>
         private static Dictionary<string, string> _languageModeMap;
->>>>>>> master
 
         #endregion
     }
