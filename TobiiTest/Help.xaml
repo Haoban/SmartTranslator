@@ -1,0 +1,43 @@
+﻿<Window x:Class="TobiiTest.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TobiiTest"
+        mc:Ignorable="d"
+        Title="Help" Height="300" Width="300">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#FFF1F1F1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="292" Grid.RowSpan="3" Margin="0,0,0,-9"/>
+
+        <Image x:Name ="logo1" HorizontalAlignment="Left" Height="74" Margin="94,10,0,0" VerticalAlignment="Top" Width="85" Source="Ateam-square.png" Opacity="0.95">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="Ateam-square.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <RichTextBox HorizontalAlignment="Left" Height="38" Margin="36,10,0,-1" VerticalAlignment="Top" Width="224" TextChanged="RichTextBox_TextChanged" FontWeight="Bold" FontSize="18" BorderThickness="0" Grid.Row="2" BorderBrush="{x:Null}" Background="{x:Null}">
+            <FlowDocument>
+                <Paragraph LineHeight="6">
+                    <Run Text="Smart Translator Help"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <RichTextBox HorizontalAlignment="Left" Height="115" Margin="0,58,0,-123" Grid.Row="2" VerticalAlignment="Top" Width="282" TextChanged="RichTextBox_TextChanged" FontWeight="Bold"  VerticalScrollBarVisibility="Visible" >
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="Welcome to Smart Translator"/>
+                </Paragraph>
+                <Paragraph FontWeight="Normal">
+                    <Run Text="To use the Smart Translation App, first connect Tobii Eyex with your computer, then open the Smart Translator App to set the screenshot size and screenshot key. Look at screen and gaze the text you want to translate, then press the key you set in advance to get the screenshot, press the key again to get the translation."/>
+
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
+    </Grid>
+</Window>

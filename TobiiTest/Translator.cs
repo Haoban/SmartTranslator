@@ -1,4 +1,7 @@
-﻿
+﻿// Copyright (c) 2015 Ravi Bhavnani
+// License: Code Project Open License
+// http://www.codeproject.com/info/cpol10.aspx
+
 using System;
 using System.Collections.Generic;
 using System.IO;
