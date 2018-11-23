@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Tesseract;
 
+
+
 namespace TobiiTest
 {
     class OCRUtil
@@ -60,7 +62,7 @@ namespace TobiiTest
         }
 
         // From: https://github.com/charlesw/tesseract-samples/blob/master/src/Tesseract.ConsoleDemo/Program.cs
-        public static void RecognizeImage(Bitmap abc)
+        public static string RecognizeImage(Bitmap abc)
         {
             //var testImagePath = "./phototest.tif";
             /*
@@ -72,6 +74,7 @@ namespace TobiiTest
             
             try
             {
+                string text;
                 using (var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
                 {
                     //using (var img = Pix.LoadFromFile(testImagePath))
@@ -80,11 +83,26 @@ namespace TobiiTest
                     {
                         using (var page = engine.Process(img))
                         {
-                            var text = page.GetText();
+                            text = page.GetText();
+                            return text;
+                            /*
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
                             Console.WriteLine("Text (GetText): \r\n{0}", text);
+
+                            //Call the translator
+                            Translator t = new Translator();
+                            string targetlanguage;
+                            string sourcelanguage;
+
+                            targetlanguage = "Chinese";
+                            sourcelanguage = "English";
+                            string translation = t.Translate(text, sourcelanguage, targetlanguage);
+                            Console.WriteLine("Text (TranslatedText): \r\n{0}",translation);
+                            //end
+
                             Console.WriteLine("Text (iterator):");
+                    
                             using (var iter = page.GetIterator())
                             {
                                 iter.Begin();
@@ -118,17 +136,23 @@ namespace TobiiTest
                                         } while (iter.Next(PageIteratorLevel.Para, PageIteratorLevel.TextLine));
                                     } while (iter.Next(PageIteratorLevel.Block, PageIteratorLevel.Para));
                                 } while (iter.Next(PageIteratorLevel.Block));
-                            }
+                            }            */
                         }
                     }
+                    
                 }
+                //return text;
             }
+     
+           
+
             catch (Exception e)
             {
                 Trace.TraceError(e.ToString());
                 Console.WriteLine("Unexpected Error: " + e.Message);
                 Console.WriteLine("Details: ");
                 Console.WriteLine(e.ToString());
+                return "";
             }
 
         }

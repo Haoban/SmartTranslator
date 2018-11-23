@@ -1,0 +1,14 @@
+﻿<Window x:Class="TobiiTest.Setkey"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TobiiTest"
+        mc:Ignorable="d"
+        Title="Set shotcut key" Height="300" Width="300">
+    <Grid>
+        <Label x:Name="label" Content="ScreenShot:" HorizontalAlignment="Left" Margin="14,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.03,0.534"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="104,73,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120" TextChanged="textBox_TextChanged"/>
+
+    </Grid>
+</Window>
