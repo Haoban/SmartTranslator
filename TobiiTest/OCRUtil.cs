@@ -84,6 +84,8 @@ namespace TobiiTest
                         using (var page = engine.Process(img))
                         {
                             text = page.GetText();
+                            return text;
+                            /*
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
                             Console.WriteLine("Text (GetText): \r\n{0}", text);
@@ -134,12 +136,12 @@ namespace TobiiTest
                                         } while (iter.Next(PageIteratorLevel.Para, PageIteratorLevel.TextLine));
                                     } while (iter.Next(PageIteratorLevel.Block, PageIteratorLevel.Para));
                                 } while (iter.Next(PageIteratorLevel.Block));
-                            }                                                 
+                            }            */
                         }
                     }
                     
                 }
-                return text;
+                //return text;
             }
      
            
