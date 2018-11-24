@@ -52,15 +52,15 @@
 
 
         <!--Source language list-->
-        <ListBox x:Name="comboBox1" SelectedIndex="0" HorizontalAlignment="Left" Margin="33.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="307.4" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
-            <ListBoxItem Content="Select Source Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
-            <ListBoxItem Content="English"  HorizontalAlignment="Left" Width="118.4"/>
-        </ListBox>
+        <ComboBox x:Name="sourceLanguageCB" SelectedIndex="0" HorizontalAlignment="Left" Margin="33.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="307.4" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
+            <ComboBoxItem Content="Select Source Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
+            <!--<ComboBoxItem Content="English"  HorizontalAlignment="Left" Width="118.4"/>-->
+        </ComboBox>
 
         <Button x:Name="button1" Content="+" HorizontalAlignment="Left" Margin="341,67.4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="51" Height="50" FontSize="35"/>
 
         <!--Target language list-->
-        <ComboBox x:Name="comboBox2" SelectedIndex="0" HorizontalAlignment="Left" Margin="527.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="378" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
+        <ComboBox x:Name="targetLanguageCB" SelectedIndex="0" HorizontalAlignment="Left" Margin="527.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="378" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
             <ComboBoxItem Content="Select Target Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="English" HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="Chinese" HorizontalAlignment="Left" Width="118.4"/>
