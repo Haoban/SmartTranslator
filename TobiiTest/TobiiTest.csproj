@@ -81,12 +81,10 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="C:\Users\admin\Downloads\MicrosoftTranslate.cs">
-      <Link>MicrosoftTranslate.cs</Link>
-    </Compile>
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MicrosoftTranslate.cs" />
     <Compile Include="Preference.xaml.cs">
       <DependentUpon>Preference.xaml</DependentUpon>
     </Compile>
