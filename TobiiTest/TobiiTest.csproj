@@ -81,13 +81,16 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="C:\Users\admin\Downloads\MicrosoftTranslate.cs">
+      <Link>MicrosoftTranslate.cs</Link>
+    </Compile>
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
     <Compile Include="Preference.xaml.cs">
       <DependentUpon>Preference.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Translator.cs" />
+    <Compile Include="GoogleTranslator.cs" />
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
