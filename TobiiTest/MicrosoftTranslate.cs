@@ -11,7 +11,13 @@ namespace TobiiTest
     {
         private static string host = "https://api.cognitive.microsofttranslator.com";
         private static string path = "/translate?api-version=3.0";
-        private string uri;
+
+        private string GetURI()
+        {
+            Languages.TryGetValue(SourceLanguage, out string from);
+            Languages.TryGetValue(TargetLanguage, out string to);
+            return host + path + "&from=" + from + "&to=" + to;
+        }
 
         private static string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("MGRjYjE1NWU0NjA5NGEzYThiZTBiYTgxNzEwZTRmMDY="));
 
@@ -111,8 +117,6 @@ namespace TobiiTest
         {
             SourceLanguage = srclang;
             TargetLanguage = targlang;
-            Languages.TryGetValue(SourceLanguage, out string to);
-            uri = host + path + "&to=" + to;
         }
 
         // async version header saved, just in case
@@ -126,7 +130,7 @@ namespace TobiiTest
             using (var request = new HttpRequestMessage())
             {
                 request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(uri);
+                request.RequestUri = new Uri(GetURI());
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
                 request.Headers.Add("Ocp-Apim-Subscription-Key", key);
 
