@@ -12,8 +12,8 @@ namespace TobiiTest
         private static string host = "https://api.cognitive.microsofttranslator.com";
         private static string path = "/translate?api-version=3.0";
         private string uri;
-        
-        private static string key = "0dcb155e46094a3a8be0ba81710e4f06";
+
+        private static string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("MGRjYjE1NWU0NjA5NGEzYThiZTBiYTgxNzEwZTRmMDY="));
 
         // Language names like in Dictionary below
         public string SourceLanguage
