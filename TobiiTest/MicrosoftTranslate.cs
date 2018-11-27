@@ -20,7 +20,7 @@ namespace TobiiTest
 
         static string text = "Hello world!";
 
-        async static void Translate()
+        async static string Translate(string text)
         {
             System.Object[] body = new System.Object[] { new { Text = text } };
             var requestBody = JsonConvert.SerializeObject(body);
