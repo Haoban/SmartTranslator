@@ -15,6 +15,7 @@ namespace TobiiTest
         
         private static string key = "0dcb155e46094a3a8be0ba81710e4f06";
 
+        // Language names like in Dictionary below
         public string SourceLanguage
         {
             get;
