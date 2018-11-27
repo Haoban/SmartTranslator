@@ -14,7 +14,7 @@ namespace TobiiTest
     /// <summary>
     /// Translates text using Google's online language tools.
     /// </summary>
-    public class Translator
+    public class GoogleTranslator
     {
         #region Properties
 
@@ -25,8 +25,8 @@ namespace TobiiTest
         {
             get
             {
-                Translator.EnsureInitialized();
-                return Translator._languageModeMap.Keys.OrderBy(p => p);
+                GoogleTranslator.EnsureInitialized();
+                return GoogleTranslator._languageModeMap.Keys.OrderBy(p => p);
             }
         }
 
@@ -74,10 +74,10 @@ namespace TobiiTest
 
         #region Constructor
 
-        public Translator(string source, string target)
+        public GoogleTranslator(string source, string target)
         {
-            this.SourceLanguage = Translator.LanguageEnumToIdentifier(source);
-            this.TargetLanguage = Translator.LanguageEnumToIdentifier(target);
+            this.SourceLanguage = GoogleTranslator.LanguageEnumToIdentifier(source);
+            this.TargetLanguage = GoogleTranslator.LanguageEnumToIdentifier(target);
         }
 
         #endregion
@@ -107,8 +107,8 @@ namespace TobiiTest
             {
                 // Download translation
                 string url = string.Format("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-                                            Translator.LanguageEnumToIdentifier(SourceLanguage),
-                                            Translator.LanguageEnumToIdentifier(TargetLanguage),
+                                            GoogleTranslator.LanguageEnumToIdentifier(SourceLanguage),
+                                            GoogleTranslator.LanguageEnumToIdentifier(TargetLanguage),
                                             HttpUtility.UrlEncode(sourceText));
                 string outputFile = Path.GetTempFileName();
                 using (WebClient wc = new WebClient())
@@ -196,8 +196,8 @@ namespace TobiiTest
             (string language)
         {
             string mode = string.Empty;
-            Translator.EnsureInitialized();
-            Translator._languageModeMap.TryGetValue(language, out mode);
+            GoogleTranslator.EnsureInitialized();
+            GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
             return mode;
         }
 
@@ -206,72 +206,72 @@ namespace TobiiTest
         /// </summary>
         private static void EnsureInitialized()
         {
-            if (Translator._languageModeMap == null)
+            if (GoogleTranslator._languageModeMap == null)
             {
-                Translator._languageModeMap = new Dictionary<string, string>();
-                Translator._languageModeMap.Add("Afrikaans", "af");
-                Translator._languageModeMap.Add("Albanian", "sq");
-                Translator._languageModeMap.Add("Arabic", "ar");
-                Translator._languageModeMap.Add("Armenian", "hy");
-                Translator._languageModeMap.Add("Azerbaijani", "az");
-                Translator._languageModeMap.Add("Basque", "eu");
-                Translator._languageModeMap.Add("Belarusian", "be");
-                Translator._languageModeMap.Add("Bengali", "bn");
-                Translator._languageModeMap.Add("Bulgarian", "bg");
-                Translator._languageModeMap.Add("Catalan", "ca");
-                Translator._languageModeMap.Add("Chinese", "zh-CN");
-                Translator._languageModeMap.Add("Croatian", "hr");
-                Translator._languageModeMap.Add("Czech", "cs");
-                Translator._languageModeMap.Add("Danish", "da");
-                Translator._languageModeMap.Add("Dutch", "nl");
-                Translator._languageModeMap.Add("English", "en");
-                Translator._languageModeMap.Add("Esperanto", "eo");
-                Translator._languageModeMap.Add("Estonian", "et");
-                Translator._languageModeMap.Add("Filipino", "tl");
-                Translator._languageModeMap.Add("Finnish", "fi");
-                Translator._languageModeMap.Add("French", "fr");
-                Translator._languageModeMap.Add("Galician", "gl");
-                Translator._languageModeMap.Add("German", "de");
-                Translator._languageModeMap.Add("Georgian", "ka");
-                Translator._languageModeMap.Add("Greek", "el");
-                Translator._languageModeMap.Add("Haitian Creole", "ht");
-                Translator._languageModeMap.Add("Hebrew", "iw");
-                Translator._languageModeMap.Add("Hindi", "hi");
-                Translator._languageModeMap.Add("Hungarian", "hu");
-                Translator._languageModeMap.Add("Icelandic", "is");
-                Translator._languageModeMap.Add("Indonesian", "id");
-                Translator._languageModeMap.Add("Irish", "ga");
-                Translator._languageModeMap.Add("Italian", "it");
-                Translator._languageModeMap.Add("Japanese", "ja");
-                Translator._languageModeMap.Add("Korean", "ko");
-                Translator._languageModeMap.Add("Lao", "lo");
-                Translator._languageModeMap.Add("Latin", "la");
-                Translator._languageModeMap.Add("Latvian", "lv");
-                Translator._languageModeMap.Add("Lithuanian", "lt");
-                Translator._languageModeMap.Add("Macedonian", "mk");
-                Translator._languageModeMap.Add("Malay", "ms");
-                Translator._languageModeMap.Add("Maltese", "mt");
-                Translator._languageModeMap.Add("Norwegian", "no");
-                Translator._languageModeMap.Add("Persian", "fa");
-                Translator._languageModeMap.Add("Polish", "pl");
-                Translator._languageModeMap.Add("Portuguese", "pt");
-                Translator._languageModeMap.Add("Romanian", "ro");
-                Translator._languageModeMap.Add("Russian", "ru");
-                Translator._languageModeMap.Add("Serbian", "sr");
-                Translator._languageModeMap.Add("Slovak", "sk");
-                Translator._languageModeMap.Add("Slovenian", "sl");
-                Translator._languageModeMap.Add("Spanish", "es");
-                Translator._languageModeMap.Add("Swahili", "sw");
-                Translator._languageModeMap.Add("Swedish", "sv");
-                Translator._languageModeMap.Add("Tamil", "ta");
-                Translator._languageModeMap.Add("Telugu", "te");
-                Translator._languageModeMap.Add("Thai", "th");
-                Translator._languageModeMap.Add("Turkish", "tr");
-                Translator._languageModeMap.Add("Ukrainian", "uk");
-                Translator._languageModeMap.Add("Urdu", "ur");
-                Translator._languageModeMap.Add("Vietnamese", "vi");
-                Translator._languageModeMap.Add("Welsh", "cy");
-                Translator._languageModeMap.Add("Yiddish", "yi");
+                GoogleTranslator._languageModeMap = new Dictionary<string, string>();
+                GoogleTranslator._languageModeMap.Add("Afrikaans", "af");
+                GoogleTranslator._languageModeMap.Add("Albanian", "sq");
+                GoogleTranslator._languageModeMap.Add("Arabic", "ar");
+                GoogleTranslator._languageModeMap.Add("Armenian", "hy");
+                GoogleTranslator._languageModeMap.Add("Azerbaijani", "az");
+                GoogleTranslator._languageModeMap.Add("Basque", "eu");
+                GoogleTranslator._languageModeMap.Add("Belarusian", "be");
+                GoogleTranslator._languageModeMap.Add("Bengali", "bn");
+                GoogleTranslator._languageModeMap.Add("Bulgarian", "bg");
+                GoogleTranslator._languageModeMap.Add("Catalan", "ca");
+                GoogleTranslator._languageModeMap.Add("Chinese", "zh-CN");
+                GoogleTranslator._languageModeMap.Add("Croatian", "hr");
+                GoogleTranslator._languageModeMap.Add("Czech", "cs");
+                GoogleTranslator._languageModeMap.Add("Danish", "da");
+                GoogleTranslator._languageModeMap.Add("Dutch", "nl");
+                GoogleTranslator._languageModeMap.Add("English", "en");
+                GoogleTranslator._languageModeMap.Add("Esperanto", "eo");
+                GoogleTranslator._languageModeMap.Add("Estonian", "et");
+                GoogleTranslator._languageModeMap.Add("Filipino", "tl");
+                GoogleTranslator._languageModeMap.Add("Finnish", "fi");
+                GoogleTranslator._languageModeMap.Add("French", "fr");
+                GoogleTranslator._languageModeMap.Add("Galician", "gl");
+                GoogleTranslator._languageModeMap.Add("German", "de");
+                GoogleTranslator._languageModeMap.Add("Georgian", "ka");
+                GoogleTranslator._languageModeMap.Add("Greek", "el");
+                GoogleTranslator._languageModeMap.Add("Haitian Creole", "ht");
+                GoogleTranslator._languageModeMap.Add("Hebrew", "iw");
+                GoogleTranslator._languageModeMap.Add("Hindi", "hi");
+                GoogleTranslator._languageModeMap.Add("Hungarian", "hu");
+                GoogleTranslator._languageModeMap.Add("Icelandic", "is");
+                GoogleTranslator._languageModeMap.Add("Indonesian", "id");
+                GoogleTranslator._languageModeMap.Add("Irish", "ga");
+                GoogleTranslator._languageModeMap.Add("Italian", "it");
+                GoogleTranslator._languageModeMap.Add("Japanese", "ja");
+                GoogleTranslator._languageModeMap.Add("Korean", "ko");
+                GoogleTranslator._languageModeMap.Add("Lao", "lo");
+                GoogleTranslator._languageModeMap.Add("Latin", "la");
+                GoogleTranslator._languageModeMap.Add("Latvian", "lv");
+                GoogleTranslator._languageModeMap.Add("Lithuanian", "lt");
+                GoogleTranslator._languageModeMap.Add("Macedonian", "mk");
+                GoogleTranslator._languageModeMap.Add("Malay", "ms");
+                GoogleTranslator._languageModeMap.Add("Maltese", "mt");
+                GoogleTranslator._languageModeMap.Add("Norwegian", "no");
+                GoogleTranslator._languageModeMap.Add("Persian", "fa");
+                GoogleTranslator._languageModeMap.Add("Polish", "pl");
+                GoogleTranslator._languageModeMap.Add("Portuguese", "pt");
+                GoogleTranslator._languageModeMap.Add("Romanian", "ro");
+                GoogleTranslator._languageModeMap.Add("Russian", "ru");
+                GoogleTranslator._languageModeMap.Add("Serbian", "sr");
+                GoogleTranslator._languageModeMap.Add("Slovak", "sk");
+                GoogleTranslator._languageModeMap.Add("Slovenian", "sl");
+                GoogleTranslator._languageModeMap.Add("Spanish", "es");
+                GoogleTranslator._languageModeMap.Add("Swahili", "sw");
+                GoogleTranslator._languageModeMap.Add("Swedish", "sv");
+                GoogleTranslator._languageModeMap.Add("Tamil", "ta");
+                GoogleTranslator._languageModeMap.Add("Telugu", "te");
+                GoogleTranslator._languageModeMap.Add("Thai", "th");
+                GoogleTranslator._languageModeMap.Add("Turkish", "tr");
+                GoogleTranslator._languageModeMap.Add("Ukrainian", "uk");
+                GoogleTranslator._languageModeMap.Add("Urdu", "ur");
+                GoogleTranslator._languageModeMap.Add("Vietnamese", "vi");
+                GoogleTranslator._languageModeMap.Add("Welsh", "cy");
+                GoogleTranslator._languageModeMap.Add("Yiddish", "yi");
             }
         }
 
