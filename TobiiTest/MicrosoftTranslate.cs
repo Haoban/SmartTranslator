@@ -20,6 +20,24 @@ namespace TobiiTest
 
         static string text = "Hello world!";
 
+        public string SourceLanguage
+        {
+            get;
+            set;
+        }
+
+        public string TargetLanguage
+        {
+            get;
+            set;
+        }
+
+        public MicrosoftTranslator(string srclang, string targlang)
+        {
+            SourceLanguage = srclang;
+            TargetLanguage = targlang;
+        }
+
         // async version header saved, just in case
         // async static string Translate(string text)
         static string Translate(string text)
