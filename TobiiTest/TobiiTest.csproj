@@ -88,6 +88,7 @@
     <Compile Include="Preference.xaml.cs">
       <DependentUpon>Preference.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Preferences.cs" />
     <Compile Include="GoogleTranslator.cs" />
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
