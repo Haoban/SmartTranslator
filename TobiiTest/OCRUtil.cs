@@ -22,12 +22,31 @@ namespace TobiiTest
             // Language list for OCR here
             // Taken from: https://github.com/tesseract-ocr/tessdata/tree/3.04.00
             { "chi_sim", "Chinese Simplified" },
-            { "chi_tra", "Chinese Traditional" },
+            { "chi_tra", "Chinese Traditional" },          
             { "eng", "English" },
             { "fin", "Finnish" },
             { "fra", "French" },
-            { "rus", "Russian" }
-            // TODO: add more
+            { "deu", "German" },
+            { "kat", "Georgian" },
+            { "kat_old", "Geogian Old" },
+            { "gle", "Irish" },
+            { "ita", "Italian" },
+            { "ita_old", "Italian Old" },
+            { "jpn", "Japanese" },            
+            { "kor", "Korean" },          
+            { "msa", "Malay" },
+            { "mal", "Malayalam" },
+            { "nep", "Nepali" },
+            { "nor", "Norwegian" },
+            { "pol", "Polish" },
+            { "ron", "Romanian" },
+            { "rus", "Russian" },
+            { "spa", "Spanish" },
+            { "spa_old", "Spanish Old" },
+            { "swe", "Swedish" },
+            { "tha", "Thai" },
+            { "tur", "Turkish" },
+
         };
 
         public static Dictionary<string, string> AvailableOCRLangs()
