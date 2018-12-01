@@ -23,57 +23,145 @@ namespace TobiiTest
     public partial class MainWindow : Window
     {
 
-        private readonly Timer _timer;
+        public Preferences pref;
+        Gazer gazer;
+        Translator translator;
+
+        string SourceLanguage
+        {
+            get;
+            set;
+        }
+        string TargetLanguage
+        {
+            get;
+            set;
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-            _timer = new Timer(250); //Updates every quarter second.
-            _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            _timer.Enabled = true;
-            //OCRUtil.RecognizeImage("n48.jpg");
-            //OCRUtil.RecognizeImage("Screen718973825.639451.png");
-        }
-        
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream();
-            //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream(Tobii.Interaction.Framework.GazePointDataMode.Unfiltered);
-          
-            var fixationDataStream = ((App)Application.Current).Host.Streams.CreateFixationDataStream();
-            /*
-           fixationDataStream.Begin((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() => {
-               lbl1.Content = "Begin fixation at X: " + x + " Y: " + y;
-               //var abc = ScreenshotUtil.TakeScreen(x, y, timestamp);
-               //OCRUtil.RecognizeImage(abc);
-           })));
-           fixationDataStream.Data((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() =>
-               lbl2.Content = String.Format("During fixation at X: {0} Y: {1}", x, y)
-           )));
-           fixationDataStream.End((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() =>
-               lbl3.Content = String.Format("End fixation at X: {0} Y: {1}", x, y)
-           )));
-           */
+
+            pref = new Preferences();
+            gazer = new Gazer();
+
+            UpdateSourceCB();
+            UpdateTargCB();
+
+            sourceLanguageCB.SelectionChanged += SourceLanguageCB_SelectionChanged;
+            targetLanguageCB.SelectionChanged += TargetLanguageCB_SelectionChanged;
         }
 
-        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // Fill source language combo box
+        private void UpdateSourceCB()
         {
-
+            sourceLanguageCB.Items.Clear();
+            
+            sourceLanguageCB.Items.Add(new ComboBoxItem()
+            {
+                Content = "Select Source Language",
+                Visibility = Visibility.Collapsed
+            });
+            sourceLanguageCB.SelectedIndex = 0;
+            
+            foreach (string lang in OCRUtil.AvailableOCRLangs().Values)
+            {
+                sourceLanguageCB.Items.Add(lang);
+            }
+            targetLanguageCB.SelectedIndex = 0;
         }
 
-        private void richTextBox1_TextChanged(object sender, TextChangedEventArgs e)
+        // Fill target language combo box
+        private void UpdateTargCB()
         {
-
+            targetLanguageCB.Items.Clear();
+            
+            targetLanguageCB.Items.Add(new ComboBoxItem()
+            {
+                Content = "Select Target Language",
+                Visibility = Visibility.Collapsed
+            });
+            targetLanguageCB.SelectedIndex = 0;
+            
+            switch (pref.Get("translator"))
+            {
+                case "Google":
+                    foreach (string lang in GoogleTranslator.Languages)
+                    {
+                        targetLanguageCB.Items.Add(lang);
+                    }
+                    break;
+                case "Microsoft":
+                    foreach (string lang in MicrosoftTranslator.Languages.Keys)
+                    {
+                        targetLanguageCB.Items.Add(lang);
+                    }
+                    break;
+                default:
+                    throw new ArgumentException("Unknown translator: " + pref.Get("translator"));
+            }
+            targetLanguageCB.SelectedIndex = 0;
         }
 
         private void Preferences_Click(object sender, RoutedEventArgs e)
         {
-            new Preference().ShowDialog();
+            var pr = new Preference(pref);
+            Console.WriteLine(pr.prefs);
+            pr.ShowDialog();
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
             new About().ShowDialog();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.ToString().Equals(Enum.Parse(typeof(Key), pref.Get("key")).ToString()))
+            {
+                if (!gazer.State)
+                {
+                    gazer.Start();
+                }
+                else
+                {
+                    var coords = gazer.Stop();
+                    var screen = ScreenshotUtil.TakeScreen(coords.Item1, coords.Item2);
+                    var text = OCRUtil.RecognizeImage(screen);
+                    srcTextTB.Text = text;
+                    
+                    translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);
+                    var tl = translator.Translate(text);
+
+                    // Debug
+                    /*
+                    var gt = (GoogleTranslator)translator;
+                    if (gt.Error != null)
+                    {
+                        Console.WriteLine(gt.Error.Message);
+                        Console.WriteLine(gt.Error.StackTrace);
+                    }
+                       */ 
+                    targTextTB.Text = tl;
+                }
+            }
+        }
+
+        private void SourceLanguageCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
+            {
+                SourceLanguage = sourceLanguageCB.SelectedItem.ToString();
+            }
+                
+        }
+
+        private void TargetLanguageCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
+            {
+                TargetLanguage = (string)targetLanguageCB.SelectedItem.ToString();
+            }
         }
     }
 }
