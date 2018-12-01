@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,32 @@ namespace TobiiTest
 {
     class OCRUtil
     {
+
+        public static readonly Dictionary<string, string> OCRAllLangs = new Dictionary<string, string>
+        {
+            // Language list for OCR here
+            // Taken from: https://github.com/tesseract-ocr/tessdata/tree/3.04.00
+            { "chi_sim", "Chinese Simplified" },
+            { "chi_tra", "Chinese Traditional" },
+            { "eng", "English" },
+            { "fin", "Finnish" },
+            { "fra", "French" },
+            { "rus", "Russian" }
+            // TODO: add more
+        };
+
+        public static Dictionary<string, string> AvailableOCRLangs()
+        {
+            var dict = new Dictionary<string, string>();
+            foreach (string file in Directory.GetFiles("./tessdata"))
+            {
+                var name = Path.GetFileNameWithoutExtension(file);
+                OCRAllLangs.TryGetValue(name, out string lang);
+                dict.Add(name, lang);
+            }
+            return dict;
+        }
+
         // Magnifies image by factor
         public static Image MagnifyImage(Image image, int factor)
         {
@@ -71,7 +98,7 @@ namespace TobiiTest
                 testImagePath = args[0];
             }
             */
-            
+
             try
             {
                 string text;
@@ -84,6 +111,8 @@ namespace TobiiTest
                         using (var page = engine.Process(img))
                         {
                             text = page.GetText();
+                            return text;
+                            /*
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
                             Console.WriteLine("Text (GetText): \r\n{0}", text);
@@ -134,16 +163,13 @@ namespace TobiiTest
                                         } while (iter.Next(PageIteratorLevel.Para, PageIteratorLevel.TextLine));
                                     } while (iter.Next(PageIteratorLevel.Block, PageIteratorLevel.Para));
                                 } while (iter.Next(PageIteratorLevel.Block));
-                            }                                                 
+                            }            */
                         }
                     }
-                    
-                }
-                return text;
-            }
-     
-           
 
+                }
+                //return text;
+            }
             catch (Exception e)
             {
                 Trace.TraceError(e.ToString());
@@ -152,7 +178,7 @@ namespace TobiiTest
                 Console.WriteLine(e.ToString());
                 return "";
             }
-
         }
+
     }
 }
