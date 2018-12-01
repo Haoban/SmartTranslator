@@ -26,7 +26,27 @@ namespace TobiiTest
             { "eng", "English" },
             { "fin", "Finnish" },
             { "fra", "French" },
-            { "rus", "Russian" }
+            { "rus", "Russian" },
+            { "deu", "German" },
+            {"gle", "Irish" },
+            { "ita", "Italian" },
+            {"ita_old", "Italian Old" },
+            {"jpn", "Japanese" },
+            {"kat", "Georgian" },
+            {"kat_old", "Geogian Old" },
+            {"kor", "Korean" },
+            {"mal", "Malayalam" },
+            {"msa", "Malay" },
+            {"nep", "Nepali" },
+            {"nor", "Norwegian" },
+            {"pol", "Polish" },
+            {"ron", "Romanian" },
+            {"spa", "Spanish" },
+            {"spa_old", "Spanish Old" },
+            {"swe", "Swedish" },
+            {"tha", "Thai" },
+            {"tur", "Turkish" },
+
             // TODO: add more
         };
 
