@@ -140,33 +140,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="tessdata\chi_sim.traineddata" />
-    <None Include="tessdata\chi_tra.traineddata" />
-    <None Include="tessdata\deu.traineddata" />
     <None Include="tessdata\eng.traineddata">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="tessdata\fin.traineddata" />
-    <None Include="tessdata\fra.traineddata" />
-    <None Include="tessdata\gle.traineddata" />
-    <None Include="tessdata\ita.traineddata" />
-    <None Include="tessdata\ita_old.traineddata" />
-    <None Include="tessdata\jpn.traineddata" />
-    <None Include="tessdata\kat.traineddata" />
-    <None Include="tessdata\kat_old.traineddata" />
-    <None Include="tessdata\kor.traineddata" />
-    <None Include="tessdata\mal.traineddata" />
-    <None Include="tessdata\msa.traineddata" />
-    <None Include="tessdata\nep.traineddata" />
-    <None Include="tessdata\nor.traineddata" />
-    <None Include="tessdata\pol.traineddata" />
-    <None Include="tessdata\ron.traineddata" />
-    <None Include="tessdata\rus.traineddata" />
-    <None Include="tessdata\spa.traineddata" />
-    <None Include="tessdata\spa_old.traineddata" />
-    <None Include="tessdata\swe.traineddata" />
-    <None Include="tessdata\tha.traineddata" />
-    <None Include="tessdata\tur.traineddata" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
