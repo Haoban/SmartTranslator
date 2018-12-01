@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 // NOTE: Install the Newtonsoft.Json NuGet package.
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TobiiTest
 {
@@ -124,10 +125,9 @@ namespace TobiiTest
 
                 var response = client.SendAsync(request).Result;
                 var responseBody = response.Content.ReadAsStringAsync().Result;
-                var result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody), Formatting.Indented);
 
-                // TODO: result is in JSON, figure out how to get it out of there
-                return result;
+                var jarr = JArray.Parse(responseBody);
+                return jarr[0]["translations"][0]["text"].ToString();
             }
         }
 

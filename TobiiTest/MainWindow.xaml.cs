@@ -22,7 +22,6 @@ namespace TobiiTest
     
     public partial class MainWindow : Window
     {
-
         public Preferences pref;
         Gazer gazer;
         Translator translator;
