@@ -81,6 +81,7 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Gazer.cs" />
     <Compile Include="Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
@@ -90,6 +91,7 @@
     </Compile>
     <Compile Include="Preferences.cs" />
     <Compile Include="GoogleTranslator.cs" />
+    <Compile Include="Translator.cs" />
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

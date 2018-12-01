@@ -14,7 +14,7 @@ namespace TobiiTest
     /// <summary>
     /// Translates text using Google's online language tools.
     /// </summary>
-    public class GoogleTranslator
+    public class GoogleTranslator : Translator
     {
         #region Properties
 
@@ -57,19 +57,7 @@ namespace TobiiTest
             get;
             private set;
         }
-
-        public string SourceLanguage
-        {
-            get;
-            set;
-        }
-
-        public string TargetLanguage
-        {
-            get;
-            set;
-        }
-
+ 
         #endregion
 
         #region Constructor
@@ -91,10 +79,8 @@ namespace TobiiTest
         /// <param name="sourceLanguage">The source language.</param>
         /// <param name="targetLanguage">The target language.</param>
         /// <returns>The translation.</returns>
-        public string Translate
-                (string sourceText/*,
-                 string sourceLanguage,
-                 string targetLanguage*/)
+        public override string Translate
+                (string sourceText)
         {
             // Initialize
             this.Error = null;
