@@ -24,10 +24,44 @@ namespace TobiiTest
     {
 
         private readonly Timer _timer;
+        Preferences pref = new Preferences();
 
         public MainWindow()
         {
             InitializeComponent();
+            // Fill source language combo box
+            foreach (string lang in OCRUtil.AvailableOCRLangs().Values)
+            {
+                sourceLanguageCB.Items.Add(lang);
+            }
+            // Fill target language combo box
+            targetLanguageCB.Items.Clear();
+            targetLanguageCB.Items.Add(new ComboBoxItem()
+            {
+                Content = "Select Target Language",
+                Visibility = Visibility.Collapsed
+            });
+            targetLanguageCB.SelectedIndex = 0;
+            switch (pref.Get("translator"))
+            {
+                case "google":
+                    foreach (string lang in GoogleTranslator.Languages)
+                    {
+                        targetLanguageCB.Items.Add(lang);
+                    }
+                    break;
+                case "microsoft":
+                    foreach (string lang in MicrosoftTranslator.Languages.Keys)
+                    {
+                        targetLanguageCB.Items.Add(lang);
+                    }
+                    break;
+            }
+            foreach (string lang in OCRUtil.AvailableOCRLangs().Values)
+            {
+                sourceLanguageCB.Items.Add(lang);
+            }
+
             _timer = new Timer(250); //Updates every quarter second.
             _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             _timer.Enabled = true;
@@ -40,7 +74,7 @@ namespace TobiiTest
             //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream();
             //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream(Tobii.Interaction.Framework.GazePointDataMode.Unfiltered);
           
-            var fixationDataStream = ((App)Application.Current).Host.Streams.CreateFixationDataStream();
+            //var fixationDataStream = ((App)Application.Current).Host.Streams.CreateFixationDataStream();
             /*
            fixationDataStream.Begin((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() => {
                lbl1.Content = "Begin fixation at X: " + x + " Y: " + y;
