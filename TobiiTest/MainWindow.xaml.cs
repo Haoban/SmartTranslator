@@ -66,29 +66,14 @@ namespace TobiiTest
 
         }
 
-        /**private void menueOpen_Click0(object sender, RoutedEventArgs e)
+        private void Preferences_Click(object sender, RoutedEventArgs e)
         {
-
+            new Preference().ShowDialog();
         }
 
-        private void menueOpen_Click1(object sender, RoutedEventArgs e)
+        private void About_Click(object sender, RoutedEventArgs e)
         {
-
+            new About().ShowDialog();
         }
-
-        private void menueOpen_Click2(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void menueOpen_Click3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void menueOpen_Click4(object sender, RoutedEventArgs e)
-        {
-
-        }*/
     }
 }
