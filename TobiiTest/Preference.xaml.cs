@@ -33,9 +33,6 @@ namespace TobiiTest
             }
             
             ssSizeCB.SelectedIndex = ssSizeCB.Items.IndexOf(prefs.Get("sssize"));
-            //foreach (var item in ssSizeCB.Items)
-            //    Console.WriteLine(item);
-            //Console.WriteLine(prefs.Get("sssize"));
             if (ssSizeCB.SelectedItem.ToString().Equals("Custom"))
             {
                 sizeXTB.IsEnabled = true;

@@ -23,11 +23,9 @@ namespace TobiiTest
     public partial class MainWindow : Window
     {
 
-        private readonly Timer _timer;
         public Preferences pref;
         Gazer gazer;
         Translator translator;
-        Tuple<double, double> coords;
 
         string SourceLanguage
         {
@@ -46,19 +44,12 @@ namespace TobiiTest
 
             pref = new Preferences();
             gazer = new Gazer();
-            //translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);
 
             UpdateSourceCB();
             UpdateTargCB();
 
             sourceLanguageCB.SelectionChanged += SourceLanguageCB_SelectionChanged;
             targetLanguageCB.SelectionChanged += TargetLanguageCB_SelectionChanged;
-
-            _timer = new Timer(250); //Updates every quarter second.
-            _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            _timer.Enabled = true;
-            //OCRUtil.RecognizeImage("n48.jpg");
-            //OCRUtil.RecognizeImage("Screen718973825.639451.png");
         }
 
         // Fill source language combo box
@@ -111,11 +102,6 @@ namespace TobiiTest
             }
             targetLanguageCB.SelectedIndex = 0;
         }
-        
-        private void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            
-        }
 
         private void Preferences_Click(object sender, RoutedEventArgs e)
         {
@@ -131,32 +117,20 @@ namespace TobiiTest
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Console.WriteLine("pressed: " + e.Key.ToString());
-            Console.WriteLine("pref: " + Enum.Parse(typeof(Key), pref.Get("key")));
-            //Console.WriteLine(e.Key.ToString().Equals(Enum.Parse(typeof(Key), pref.Get("key")).ToString()));
-            //Console.WriteLine(e.Key.ToString() == Enum.Parse(typeof(Key), pref.Get("key")));
-            //Console.WriteLine("LeftCtrl".Equals("LeftCtrl"));
             if (e.Key.ToString().Equals(Enum.Parse(typeof(Key), pref.Get("key")).ToString()))
             {
-                Console.WriteLine("Right key pressed.");
-                Console.WriteLine("Checking languages...");
-                Console.WriteLine("Checking gazer...");
-                Console.WriteLine("State: " + gazer.State);
                 if (!gazer.State)
                 {
-                    Console.WriteLine("Starting gazer...");
                     gazer.Start();
                 }
                 else
                 {
-                    Console.WriteLine("Stopping gazer...");
                     var coords = gazer.Stop();
                     var screen = ScreenshotUtil.TakeScreen(coords.Item1, coords.Item2);
                     var text = OCRUtil.RecognizeImage(screen);
                     srcTextTB.Text = text;
                     
                     translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);
-                    Console.WriteLine("current translator: " + translator);
                     var tl = translator.Translate(text);
 
                     // Debug
@@ -168,7 +142,6 @@ namespace TobiiTest
                         Console.WriteLine(gt.Error.StackTrace);
                     }
                        */ 
-                    Console.WriteLine(tl);
                     targTextTB.Text = tl;
                 }
             }
@@ -179,7 +152,6 @@ namespace TobiiTest
             if (!targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
             {
                 SourceLanguage = sourceLanguageCB.SelectedItem.ToString();
-                //translator.SourceLanguage = sourceLanguageCB.SelectedItem.ToString();
             }
                 
         }
@@ -188,7 +160,6 @@ namespace TobiiTest
         {
             if (!targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
             {
-                //translator.TargetLanguage = (string)targetLanguageCB.SelectedItem.ToString();
                 TargetLanguage = (string)targetLanguageCB.SelectedItem.ToString();
             }
         }

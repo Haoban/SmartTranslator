@@ -57,19 +57,7 @@ namespace TobiiTest
             get;
             private set;
         }
-        /*
-        public string SourceLanguage
-        {
-            get;
-            set;
-        }
-
-        public string TargetLanguage
-        {
-            get;
-            set;
-        }
-        */
+ 
         #endregion
 
         #region Constructor
@@ -78,8 +66,6 @@ namespace TobiiTest
         {
             this.SourceLanguage = GoogleTranslator.LanguageEnumToIdentifier(source);
             this.TargetLanguage = GoogleTranslator.LanguageEnumToIdentifier(target);
-            Console.WriteLine("from constructor: src: " + SourceLanguage);
-            Console.WriteLine("from constructor: target: " + TargetLanguage);
         }
 
         #endregion
@@ -197,15 +183,11 @@ namespace TobiiTest
         private static string LanguageEnumToIdentifier
             (string language)
         {
-            if (language != null)
-            {
-                string mode = string.Empty;
-                GoogleTranslator.EnsureInitialized();
-                Console.WriteLine("language parameter: " + language);
-                GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
-                return mode;
-            }
-            else return "";
+            string mode = string.Empty;
+            GoogleTranslator.EnsureInitialized();
+            Console.WriteLine("language parameter: " + language);
+            GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
+            return mode;
         }
 
         /// <summary>

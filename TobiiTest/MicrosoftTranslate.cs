@@ -22,20 +22,6 @@ namespace TobiiTest
         private static readonly string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("MGRjYjE1NWU0NjA5NGEzYThiZTBiYTgxNzEwZTRmMDY="));
 
         // Language names like in Dictionary below
-        /*
-        public string SourceLanguage
-        {
-            get;
-            set;
-        }
-
-        public string TargetLanguage
-        {
-            get;
-            set;
-        }
-        */
-
         public static Dictionary<string,string> Languages
         {
             get
@@ -140,19 +126,10 @@ namespace TobiiTest
                 var responseBody = response.Content.ReadAsStringAsync().Result;
                 var result = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(responseBody), Formatting.Indented);
 
-                //Console.OutputEncoding = UnicodeEncoding.UTF8;
-                //Console.WriteLine(result);
+                // TODO: result is in JSON, figure out how to get it out of there
                 return result;
             }
         }
-
-        /*
-        static void Main(string[] args)
-        {
-            Translate();
-            Console.ReadLine();
-        }
-        */
 
         private static Dictionary<string, string> _languages;
     }
