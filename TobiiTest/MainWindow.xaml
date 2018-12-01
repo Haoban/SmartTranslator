@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TobiiTest"
         mc:Ignorable="d"
+        Name="mainWindow"
+        KeyDown="Window_KeyDown"
         Title="Smart Translator" Height="648.9" Width="952.778">
 
     <Grid Margin="0,0,-43,-2">
@@ -62,27 +64,33 @@
         <!--Target language list-->
         <ComboBox x:Name="targetLanguageCB" SelectedIndex="0" HorizontalAlignment="Left" Margin="527.6,67,0,0" Grid.Row="2" VerticalAlignment="Top" Width="378" Height="50" d:LayoutOverrides="VerticalAlignment" FontSize="22">
             <ComboBoxItem Content="Select Target Language" Visibility="Collapsed"  HorizontalAlignment="Left" Width="118.4"/>
-            <ComboBoxItem Content="English" HorizontalAlignment="Left" Width="118.4"/>
+            <!--<ComboBoxItem Content="English" HorizontalAlignment="Left" Width="118.4"/>
             <ComboBoxItem Content="Chinese" HorizontalAlignment="Left" Width="118.4"/>
-            <ComboBoxItem Content="French" HorizontalAlignment="Left" Width="118.4"/>
+            <ComboBoxItem Content="French" HorizontalAlignment="Left" Width="118.4"/>-->
         </ComboBox>
         <!--Translate Text Area!-->
 
-        <RichTextBox x:Name="richTextBox1" HorizontalAlignment="Left" Height="182" Margin="34,141.4,0,-1" Grid.Row="2" VerticalAlignment="Top" Width="358" TextChanged="richTextBox1_TextChanged" FontSize="24" VerticalScrollBarVisibility="Visible">
+        <!--
+        <RichTextBox x:Name="srcTextRTB" HorizontalAlignment="Left" Height="182" Margin="34,141.4,0,-1" Grid.Row="2" VerticalAlignment="Top" Width="358" TextChanged="richTextBox1_TextChanged" FontSize="24" VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Text"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        -->
+        <TextBox x:Name="srcTextTB" HorizontalAlignment="Left" Height="182" Margin="34,141.4,0,-1" Grid.Row="2" VerticalAlignment="Top" Width="358" FontSize="16" VerticalScrollBarVisibility="Visible" Text="Text"/>
 
-        <RichTextBox x:Name="richTextBox2" HorizontalAlignment="Left" Height="182" Margin="528,141.4,0,-2.6" Grid.Row="2" VerticalAlignment="Top" Width="378" FontSize="24" VerticalScrollBarVisibility="Visible">
+        <!--
+        <RichTextBox x:Name="targTextRTB" HorizontalAlignment="Left" Height="182" Margin="528,141.4,0,-2.6" Grid.Row="2" VerticalAlignment="Top" Width="378" FontSize="24" VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Translate:"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
+        -->
+        <TextBox x:Name="targTextTB" HorizontalAlignment="Left" Height="182" Margin="528,141.4,0,-2.6" Grid.Row="2" VerticalAlignment="Top" Width="378" FontSize="16" VerticalScrollBarVisibility="Visible" Text="Text"/>
         <Separator HorizontalAlignment="Left" Height="192" Margin="315,103.4,0,-34.6" Grid.Row="2" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.528,0.693">
             <Separator.RenderTransform>
                 <TransformGroup>

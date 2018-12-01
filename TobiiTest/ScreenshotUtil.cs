@@ -11,7 +11,7 @@ namespace TobiiTest
 {
     class ScreenshotUtil
     {
-        public static Bitmap TakeScreen(double x, double y, double timestamp)
+        public static Bitmap TakeScreen(double x, double y)
         {
             //Create a new bitmap.
             var bmpScreenshot = new Bitmap(225,
@@ -40,7 +40,7 @@ namespace TobiiTest
                                         new Size(225,255),
                                         CopyPixelOperation.SourceCopy);
             // Save the screenshot to the specified path that the user has chosen.
-            bmpScreenshot.Save("Screen" + timestamp.ToString() + ".png", ImageFormat.Png);
+            //bmpScreenshot.Save("Screen" + timestamp.ToString() + ".png", ImageFormat.Png);
             return bmpScreenshot;
         }
     }

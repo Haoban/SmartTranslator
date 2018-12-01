@@ -14,7 +14,7 @@ namespace TobiiTest
     /// <summary>
     /// Translates text using Google's online language tools.
     /// </summary>
-    public class GoogleTranslator
+    public class GoogleTranslator : Translator
     {
         #region Properties
 
@@ -57,7 +57,7 @@ namespace TobiiTest
             get;
             private set;
         }
-
+        /*
         public string SourceLanguage
         {
             get;
@@ -69,7 +69,7 @@ namespace TobiiTest
             get;
             set;
         }
-
+        */
         #endregion
 
         #region Constructor
@@ -78,6 +78,8 @@ namespace TobiiTest
         {
             this.SourceLanguage = GoogleTranslator.LanguageEnumToIdentifier(source);
             this.TargetLanguage = GoogleTranslator.LanguageEnumToIdentifier(target);
+            Console.WriteLine("from constructor: src: " + SourceLanguage);
+            Console.WriteLine("from constructor: target: " + TargetLanguage);
         }
 
         #endregion
@@ -91,7 +93,7 @@ namespace TobiiTest
         /// <param name="sourceLanguage">The source language.</param>
         /// <param name="targetLanguage">The target language.</param>
         /// <returns>The translation.</returns>
-        public string Translate
+        public override string Translate
                 (string sourceText/*,
                  string sourceLanguage,
                  string targetLanguage*/)
@@ -195,10 +197,15 @@ namespace TobiiTest
         private static string LanguageEnumToIdentifier
             (string language)
         {
-            string mode = string.Empty;
-            GoogleTranslator.EnsureInitialized();
-            GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
-            return mode;
+            if (language != null)
+            {
+                string mode = string.Empty;
+                GoogleTranslator.EnsureInitialized();
+                Console.WriteLine("language parameter: " + language);
+                GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
+                return mode;
+            }
+            else return "";
         }
 
         /// <summary>
