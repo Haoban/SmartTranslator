@@ -40,25 +40,6 @@ namespace TobiiTest
             {
                 State = true;
                 fixationDataStream.IsEnabled = true;
-                //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream();
-                //var gazePointDataStream = ((App)Application.Current).Host.Streams.CreateGazePointDataStream(Tobii.Interaction.Framework.GazePointDataMode.Unfiltered);
-
-                //fixationDataStream.Begin((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() => {
-                /*
-                fixationDataStream.Begin((x, y, timestamp) =>
-                {
-                    this.x = x;
-                    this.y = y;
-                });
-                */
-                /*
-               fixationDataStream.Data((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() =>
-                   lbl2.Content = String.Format("During fixation at X: {0} Y: {1}", x, y)
-               )));
-               fixationDataStream.End((x, y, timestamp) => Dispatcher.BeginInvoke(new Action(() =>
-                   lbl3.Content = String.Format("End fixation at X: {0} Y: {1}", x, y)
-               )));
-               */
             }
         }
 

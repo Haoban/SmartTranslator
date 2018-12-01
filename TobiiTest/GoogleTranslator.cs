@@ -80,9 +80,7 @@ namespace TobiiTest
         /// <param name="targetLanguage">The target language.</param>
         /// <returns>The translation.</returns>
         public override string Translate
-                (string sourceText/*,
-                 string sourceLanguage,
-                 string targetLanguage*/)
+                (string sourceText)
         {
             // Initialize
             this.Error = null;
@@ -185,7 +183,6 @@ namespace TobiiTest
         {
             string mode = string.Empty;
             GoogleTranslator.EnsureInitialized();
-            Console.WriteLine("language parameter: " + language);
             GoogleTranslator._languageModeMap.TryGetValue(language, out mode);
             return mode;
         }
