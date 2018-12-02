@@ -42,7 +42,7 @@
                             </TextBox.Style>
                         </TextBox>
                     </MenuItem>
-                    <MenuItem Name="SmartTranslatorHelp" Header="Smart Translator Help" ></MenuItem>
+                    <MenuItem Name="SmartTranslatorHelp" Header="Smart Translator Help" Click="Help_Click"></MenuItem>
                 </MenuItem>
             </Menu>
         </DockPanel>

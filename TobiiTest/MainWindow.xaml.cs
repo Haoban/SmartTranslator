@@ -114,6 +114,11 @@ namespace TobiiTest
             new About().ShowDialog();
         }
 
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            new Help().ShowDialog();
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.ToString().Equals(Enum.Parse(typeof(Key), pref.Get("key")).ToString()))
