@@ -12,23 +12,44 @@ namespace TobiiTest
     class ScreenshotUtil
     {
         // TODO: pass size of screenshot as parameter
-        public static Bitmap TakeScreen(double x, double y)
+        public static Bitmap TakeScreen(double x, double y, Tuple<int, int> ssize)
         {
+            int wid = ssize.Item1;
+            int hei = ssize.Item2;
+
             //Create a new bitmap.
-            var bmpScreenshot = new Bitmap(225,
-                                           225,
+            var bmpScreenshot = new Bitmap(wid,
+                                           hei,
                                            PixelFormat.Format32bppArgb);
 
             // Create a graphics object from the bitmap.
             var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
 
-            int roundx = (int)Math.Round(x); int roundy = (int)Math.Round(y);
+            int ix = (int)Math.Round(x); int iy = (int)Math.Round(y);
 
-            gfxScreenshot.CopyFromScreen(roundx - 112,
-                                        roundy - 112,
+            int screenw = Screen.PrimaryScreen.Bounds.Size.Width;
+            int screenh = Screen.PrimaryScreen.Bounds.Size.Height;
+
+            // Validation of top left corner
+            if (ix - wid / 2 < 0)
+                ix = 0;
+            else if (ix + wid / 2 > screenw)
+                ix = screenw - wid;
+            else
+                ix = ix - wid / 2;
+
+            if (iy - hei / 2 < 0)
+                iy = 0;
+            else if (iy + hei / 2 > screenh)
+                iy = screenh - hei;
+            else
+                iy = iy - hei / 2;
+
+            gfxScreenshot.CopyFromScreen(ix,
+                                        iy,
                                         0,
                                         0,
-                                        new Size(225,255),
+                                        new Size(wid,hei),
                                         CopyPixelOperation.SourceCopy);
 
             return bmpScreenshot;
