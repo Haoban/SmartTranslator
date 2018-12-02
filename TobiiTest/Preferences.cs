@@ -26,6 +26,7 @@ namespace TobiiTest
             prefs.Add("sssize", "Small");
             prefs.Add("screenx", "0");
             prefs.Add("screeny", "0");
+            prefs.Add("magnifyFactor", "5");
         }
 
         public string Get(string key)
