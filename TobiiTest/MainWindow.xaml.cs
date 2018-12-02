@@ -125,7 +125,27 @@ namespace TobiiTest
                 else
                 {
                     var coords = gazer.Stop();
-                    var screen = ScreenshotUtil.TakeScreen(coords.Item1, coords.Item2);
+                    // Get screenshot size
+                    string ssize = pref.Get("ssize");
+                    Tuple<int, int> size;
+                    switch (ssize)
+                    {
+                        case "Small":
+                            size = Tuple.Create(200, 200);
+                            break;
+                        case "Medium":
+                            size = Tuple.Create(400, 400);
+                            break;
+                        case "Large":
+                            size = Tuple.Create(600, 600);
+                            break;
+                        case "Custom":
+                            size = Tuple.Create(Int32.Parse(pref.Get("screenx")), Int32.Parse(pref.Get("screeny")));
+                            break;
+                        default:
+                            throw new ArgumentException("No such screenshot size: " + ssize);
+                    }
+                    var screen = ScreenshotUtil.TakeScreen(coords.Item1, coords.Item2, size);
                     var text = OCRUtil.RecognizeImage(screen);
                     srcTextTB.Text = text;
                     
