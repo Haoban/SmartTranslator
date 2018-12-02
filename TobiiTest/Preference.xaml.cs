@@ -54,7 +54,7 @@ namespace TobiiTest
             sizeXTB.TextChanged += SizeXTB_TextChanged;
             sizeYTB.TextChanged += SizeYTB_TextChanged;
 
-            setKey.SelectedItem = setKey.Items.IndexOf(prefs.Get("key"));
+            setKey.SelectedIndex = setKey.Items.IndexOf(prefs.Get("key"));
 
             magnify.IsEnabled = true;
             magnify.Text = prefs.Get("magnifyFactor");
