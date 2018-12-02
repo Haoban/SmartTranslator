@@ -54,7 +54,7 @@ namespace TobiiTest
             sizeXTB.TextChanged += SizeXTB_TextChanged;
             sizeYTB.TextChanged += SizeYTB_TextChanged;
 
-            setKey.SelectedItem = setKey.Items.IndexOf(prefs.Get("key"));
+            setKey.SelectedIndex = setKey.Items.IndexOf(prefs.Get("key"));
 
             magnify.IsEnabled = true;
             magnify.Text = prefs.Get("magnifyFactor");
@@ -73,7 +73,8 @@ namespace TobiiTest
             setKey.Items.Clear();
             setKey.Items.Add("Left Ctrl");
             setKey.Items.Add("Left Shift");
-            setKey.Items.Add("Left Ctrl+Alt");
+            setKey.Items.Add("Right Ctrl");
+            setKey.Items.Add("Right Shift");
         }
 
         private void TranslatorCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
