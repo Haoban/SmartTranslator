@@ -101,6 +101,9 @@ namespace TobiiTest
                 {
                     wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
                     wc.DownloadFile(url, outputFile);
+                    // DEBUG
+                    Console.WriteLine("GT: url string: " + url);
+                    //wc.DownloadFile(url, System.IO.Path.Combine(@"D:\Desktop", "responce"));
                 }
 
                 // Get translated text
@@ -166,6 +169,13 @@ namespace TobiiTest
 
             // Return result
             this.TranslationTime = DateTime.Now - tmStart;
+            if (this.Error != null)
+            {
+                Console.WriteLine("There was an error in GT");
+                Console.WriteLine(Error.Message);
+                Console.WriteLine(Error.StackTrace);
+            }
+            Console.WriteLine("GT: returning: " + translation);
             return translation;
         }
 

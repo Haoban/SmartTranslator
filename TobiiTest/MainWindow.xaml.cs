@@ -126,7 +126,7 @@ namespace TobiiTest
                 {
                     var coords = gazer.Stop();
                     // Get screenshot size
-                    string ssize = pref.Get("ssize");
+                    string ssize = pref.Get("sssize");
                     Tuple<int, int> size;
                     switch (ssize)
                     {
@@ -151,6 +151,7 @@ namespace TobiiTest
                     
                     translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);
                     var tl = translator.Translate(text);
+                    Console.WriteLine("MW: translated text: " + tl);
 
                     // Debug
                     /*
@@ -160,7 +161,7 @@ namespace TobiiTest
                         Console.WriteLine(gt.Error.Message);
                         Console.WriteLine(gt.Error.StackTrace);
                     }
-                       */ 
+                    */   
                     targTextTB.Text = tl;
                 }
             }
