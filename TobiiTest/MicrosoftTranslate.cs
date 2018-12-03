@@ -112,6 +112,7 @@ namespace TobiiTest
         // async static string Translate(string text)
         public override string Translate(string text)
         {
+            Console.WriteLine("MST: got text: " + text);
             System.Object[] body = new System.Object[] { new { Text = text } };
             var requestBody = JsonConvert.SerializeObject(body);
 
@@ -126,6 +127,7 @@ namespace TobiiTest
                 var response = client.SendAsync(request).Result;
                 var responseBody = response.Content.ReadAsStringAsync().Result;
 
+                Console.WriteLine("MST: responce: " + responseBody);
                 var jarr = JArray.Parse(responseBody);
                 return jarr[0]["translations"][0]["text"].ToString();
             }
