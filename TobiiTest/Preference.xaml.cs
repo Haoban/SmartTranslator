@@ -65,6 +65,7 @@ namespace TobiiTest
             translatorCB.Items.Clear();
             translatorCB.Items.Add("Google");
             translatorCB.Items.Add("Microsoft");
+            translatorCB.Items.Add("Yandex");
         }
 
         private void TranslatorCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
