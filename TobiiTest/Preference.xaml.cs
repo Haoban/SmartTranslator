@@ -52,6 +52,11 @@ namespace TobiiTest
             ssSizeCB.SelectionChanged += SsSizeCB_SelectionChanged;
             sizeXTB.TextChanged += SizeXTB_TextChanged;
             sizeYTB.TextChanged += SizeYTB_TextChanged;
+
+            setKey.SelectedIndex = setKey.Items.IndexOf(prefs.Get("key"));
+
+            magnify.IsEnabled = true;
+            magnify.Text = prefs.Get("magnifyFactor");
         }
 
         private void InitComboBoxes()
@@ -65,6 +70,11 @@ namespace TobiiTest
             translatorCB.Items.Add("Google");
             translatorCB.Items.Add("Microsoft");
             translatorCB.Items.Add("Yandex");
+            setKey.Items.Clear();
+            setKey.Items.Add("Left Ctrl");
+            setKey.Items.Add("Left Shift");
+            setKey.Items.Add("Right Ctrl");
+            setKey.Items.Add("Right Shift");
         }
 
         private void TranslatorCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -103,6 +113,11 @@ namespace TobiiTest
         private void SizeYTB_TextChanged(object sender, TextChangedEventArgs e)
         {
             prefs.Update("screeny", sizeYTB.Text);
+        }
+
+        private void MagnifyFactor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            prefs.Update("magnifyFactor", magnify.Text);
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
