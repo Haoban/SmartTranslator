@@ -31,23 +31,25 @@ namespace TobiiTest
             {
                 throw new ArgumentException("prefs are null");
             }
-            
+
             ssSizeCB.SelectedIndex = ssSizeCB.Items.IndexOf(prefs.Get("sssize"));
+            sizeXTB.Text = prefs.Get("screenx");
+            sizeYTB.Text = prefs.Get("screeny");
             if (ssSizeCB.SelectedItem.ToString().Equals("Custom"))
             {
                 sizeXTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screenx");
                 sizeYTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screeny");
             }
             else
             {
                 sizeXTB.IsEnabled = false;
-                sizeXTB.Text = "";
                 sizeYTB.IsEnabled = false;
-                sizeYTB.Text = "";
             }
-            translatorCB.SelectedItem = translatorCB.Items.IndexOf(prefs.Get("translator"));
+
+            Console.WriteLine("PW: selectedIndex: " + ssSizeCB.SelectedIndex);
+            Console.WriteLine("PW: pref: " + prefs.Get("sssize"));
+            Console.WriteLine("PW: IndexOf: " + ssSizeCB.Items.IndexOf(prefs.Get("sssize")));
+            translatorCB.SelectedIndex = translatorCB.Items.IndexOf(prefs.Get("translator"));
 
             translatorCB.SelectionChanged += TranslatorCB_SelectionChanged;
             ssSizeCB.SelectionChanged += SsSizeCB_SelectionChanged;
@@ -82,14 +84,12 @@ namespace TobiiTest
                 sizeXTB.IsEnabled = true;
                 sizeXTB.Text = prefs.Get("screenx");
                 sizeYTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screeny");
+                sizeYTB.Text = prefs.Get("screeny");
             }
             else
             {
                 sizeXTB.IsEnabled = false;
-                sizeXTB.Text = "";
                 sizeYTB.IsEnabled = false;
-                sizeYTB.Text = "";
             }
         }
 
