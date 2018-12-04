@@ -46,9 +46,6 @@ namespace TobiiTest
                 sizeYTB.IsEnabled = false;
             }
 
-            Console.WriteLine("PW: selectedIndex: " + ssSizeCB.SelectedIndex);
-            Console.WriteLine("PW: pref: " + prefs.Get("sssize"));
-            Console.WriteLine("PW: IndexOf: " + ssSizeCB.Items.IndexOf(prefs.Get("sssize")));
             translatorCB.SelectedIndex = translatorCB.Items.IndexOf(prefs.Get("translator"));
 
             translatorCB.SelectionChanged += TranslatorCB_SelectionChanged;
