@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:TobiiTest"
         mc:Ignorable="d"
         Closed="Window_Closed"
-        Title="Preference" Height="300" Width="300">
+        Title="Preference" Height="350" Width="400">
     <Grid>
-        <Label x:Name="label" Content="Custom Screenshot Size" HorizontalAlignment="Left" Margin="10,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.03,0.534" Height="28" FontSize="8" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="sizeXTB" HorizontalAlignment="Left" Height="28" Margin="133,79,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="65" PreviewTextInput="NumberValidationTextBox"/>
-        <TextBox x:Name="sizeYTB" HorizontalAlignment="Left" Height="28" Margin="203,79,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="65" PreviewTextInput="NumberValidationTextBox"/>
-        <ComboBox x:Name="ssSizeCB"  HorizontalAlignment="Left" SelectedIndex="0" Margin="133,44,0,0" VerticalAlignment="Top" Width="135" Height="25" FontSize="10">
+        <Label x:Name="label" Content="Custom Screenshot Size" HorizontalAlignment="Left" Margin="3,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.03,0.534" Height="28" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="sizeXTB" HorizontalAlignment="Left" Height="25" Margin="194,79,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="65" PreviewTextInput="NumberValidationTextBox"/>
+        <TextBox x:Name="sizeYTB" HorizontalAlignment="Left" Height="25" Margin="291,79,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="65" PreviewTextInput="NumberValidationTextBox"/>
+        <ComboBox x:Name="ssSizeCB"  HorizontalAlignment="Left" SelectedIndex="0" Margin="194,44,0,0" VerticalAlignment="Top" Width="162" Height="25" FontSize="10">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -20,8 +20,8 @@
             </ComboBox.Background>
         </ComboBox>
 
-        <Label Content="Screenshot Size" HorizontalAlignment="Left" Margin="11,44,0,0" VerticalAlignment="Top" BorderThickness="0" Height="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <Separator HorizontalAlignment="Left" Height="100" Margin="63.871,24.13,0,0" VerticalAlignment="Top" Width="200.999" RenderTransformOrigin="-0.058,1.069" Background="#FFD3D0D0">
+        <Label Content="Screenshot Size" HorizontalAlignment="Left" Margin="51,44,0,0" VerticalAlignment="Top" BorderThickness="0" Height="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="110,24,0,0" VerticalAlignment="Top" Width="201" RenderTransformOrigin="-0.058,1.069" Background="#FFD3D0D0">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -32,8 +32,8 @@
             </Separator.RenderTransform>
         </Separator>
 
-        <Label Name ="one" Content="Translator" HorizontalAlignment="Left" Margin="42,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.03,0.534" Height="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="translatorCB"  HorizontalAlignment="Left" SelectedIndex="0" Margin="133,116,0,0" VerticalAlignment="Top" Width="135" Height="25" FontSize="10">
+        <Label Name ="one" Content="Translator" HorizontalAlignment="Left" Margin="80,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.03,0.534" Height="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="translatorCB"  HorizontalAlignment="Left" SelectedIndex="0" Margin="194,116,0,0" VerticalAlignment="Top" Width="162" Height="25" FontSize="10">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -41,6 +41,19 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
+        
+        <Label Content="Set key" HorizontalAlignment="Left" Margin="97,150,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="setKey" HorizontalAlignment="Left" SelectedIndex="0" Margin="194,150,0,0" VerticalAlignment="Top"  Width="162" Height="25" FontSize="10">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="#FFFBF8F8" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+
+        <Label Name="two" Content="Magnification factor" HorizontalAlignment="Left" Margin="25,186,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="magnify" HorizontalAlignment="Left" Margin="194,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="162" Height="25" FontSize="10"  PreviewTextInput="NumberValidationTextBox"/>
 
     </Grid>
 </Window>
