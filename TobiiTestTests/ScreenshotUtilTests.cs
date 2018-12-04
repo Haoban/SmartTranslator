@@ -15,8 +15,8 @@ namespace TobiiTest.Tests
     {
         [Test()]
         public void TakeScreenTest()
-        {           
-           ScreenshotUtil.TakeScreen(0, 0);
+        {
+            ScreenshotUtil.TakeScreen(0, 0, Tuple.Create(10,10));
             Assert.Fail();
         }
     }
