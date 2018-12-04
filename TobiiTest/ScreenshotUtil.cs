@@ -9,7 +9,7 @@ using System.Drawing.Imaging;
 
 namespace TobiiTest
 {
-    class ScreenshotUtil
+    public class ScreenshotUtil
     {
         // TODO: pass size of screenshot as parameter
         public static Bitmap TakeScreen(double x, double y, Tuple<int, int> ssize)
