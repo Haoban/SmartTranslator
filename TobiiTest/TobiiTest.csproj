@@ -92,6 +92,7 @@
     <Compile Include="Preferences.cs" />
     <Compile Include="GoogleTranslator.cs" />
     <Compile Include="Translator.cs" />
+    <Compile Include="YandexTranslator.cs" />
     <Page Include="About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

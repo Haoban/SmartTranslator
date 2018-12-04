@@ -96,6 +96,12 @@ namespace TobiiTest
                         targetLanguageCB.Items.Add(lang);
                     }
                     break;
+                case "Yandex":
+                    foreach (string lang in YandexTranslator.Languages.Keys)
+                    {
+                        targetLanguageCB.Items.Add(lang);
+                    }
+                    break;
                 default:
                     throw new ArgumentException("Unknown translator: " + pref.Get("translator"));
             }
@@ -104,9 +110,15 @@ namespace TobiiTest
 
         private void Preferences_Click(object sender, RoutedEventArgs e)
         {
+            var oldTr = pref.Get("translator");
             var pr = new Preference(pref);
             Console.WriteLine(pr.prefs);
             pr.ShowDialog();
+            if (!oldTr.Equals(pref.Get("translator")))
+            {
+                Console.WriteLine("MW: translator changed");
+                UpdateTargCB();
+            }
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -183,7 +195,7 @@ namespace TobiiTest
 
         private void TargetLanguageCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
+            if (targetLanguageCB.SelectedItem != null && !targetLanguageCB.SelectedItem.ToString().Equals("Select Target Language"))
             {
                 TargetLanguage = (string)targetLanguageCB.SelectedItem.ToString();
             }
