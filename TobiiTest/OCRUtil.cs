@@ -14,7 +14,7 @@ using Tesseract;
 
 namespace TobiiTest
 {
-    class OCRUtil
+    public class OCRUtil
     {
 
         public static readonly Dictionary<string, string> OCRAllLangs = new Dictionary<string, string>

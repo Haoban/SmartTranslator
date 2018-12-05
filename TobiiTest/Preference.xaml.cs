@@ -54,7 +54,7 @@ namespace TobiiTest
             sizeYTB.TextChanged += SizeYTB_TextChanged;
 
             setKey.SelectedIndex = setKey.Items.IndexOf(prefs.Get("key"));
-
+            setKey.SelectionChanged += SetKey_SelectionChanged;
             magnify.IsEnabled = true;
             magnify.Text = prefs.Get("magnifyFactor");
         }
@@ -71,10 +71,10 @@ namespace TobiiTest
             translatorCB.Items.Add("Microsoft");
             translatorCB.Items.Add("Yandex");
             setKey.Items.Clear();
-            setKey.Items.Add("Left Ctrl");
-            setKey.Items.Add("Left Shift");
-            setKey.Items.Add("Right Ctrl");
-            setKey.Items.Add("Right Shift");
+            setKey.Items.Add("LeftCtrl");
+            setKey.Items.Add("LeftShift");
+            setKey.Items.Add("RightCtrl");
+            setKey.Items.Add("RightShift");
         }
 
         private void TranslatorCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -98,6 +98,12 @@ namespace TobiiTest
                 sizeXTB.IsEnabled = false;
                 sizeYTB.IsEnabled = false;
             }
+        }
+
+        private void SetKey_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            prefs.Update("key", setKey.SelectedItem.ToString());
+            Console.WriteLine("Current key: " + prefs.Get("key"));
         }
 
         private void Window_Closed(object sender, EventArgs e)
