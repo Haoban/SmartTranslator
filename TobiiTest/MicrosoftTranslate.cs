@@ -20,7 +20,7 @@ namespace TobiiTest
             return host + path + "&from=" + from + "&to=" + to;
         }
 
-        private static readonly string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("MGRjYjE1NWU0NjA5NGEzYThiZTBiYTgxNzEwZTRmMDY="));
+        private static readonly string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("NmQxODFmM2YwNTYwNGRmMmFkMDNmYTIxZWRmOTRkNjM="));
 
         // Language names like in Dictionary below
         public static Dictionary<string,string> Languages
