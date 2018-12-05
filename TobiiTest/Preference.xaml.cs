@@ -31,23 +31,22 @@ namespace TobiiTest
             {
                 throw new ArgumentException("prefs are null");
             }
-            
+
             ssSizeCB.SelectedIndex = ssSizeCB.Items.IndexOf(prefs.Get("sssize"));
+            sizeXTB.Text = prefs.Get("screenx");
+            sizeYTB.Text = prefs.Get("screeny");
             if (ssSizeCB.SelectedItem.ToString().Equals("Custom"))
             {
                 sizeXTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screenx");
                 sizeYTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screeny");
             }
             else
             {
                 sizeXTB.IsEnabled = false;
-                sizeXTB.Text = "";
                 sizeYTB.IsEnabled = false;
-                sizeYTB.Text = "";
             }
-            translatorCB.SelectedItem = translatorCB.Items.IndexOf(prefs.Get("translator"));
+
+            translatorCB.SelectedIndex = translatorCB.Items.IndexOf(prefs.Get("translator"));
 
             translatorCB.SelectionChanged += TranslatorCB_SelectionChanged;
             ssSizeCB.SelectionChanged += SsSizeCB_SelectionChanged;
@@ -70,6 +69,7 @@ namespace TobiiTest
             translatorCB.Items.Clear();
             translatorCB.Items.Add("Google");
             translatorCB.Items.Add("Microsoft");
+            translatorCB.Items.Add("Yandex");
             setKey.Items.Clear();
             setKey.Items.Add("Left Ctrl");
             setKey.Items.Add("Left Shift");
@@ -91,14 +91,12 @@ namespace TobiiTest
                 sizeXTB.IsEnabled = true;
                 sizeXTB.Text = prefs.Get("screenx");
                 sizeYTB.IsEnabled = true;
-                sizeXTB.Text = prefs.Get("screeny");
+                sizeYTB.Text = prefs.Get("screeny");
             }
             else
             {
                 sizeXTB.IsEnabled = false;
-                sizeXTB.Text = "";
                 sizeYTB.IsEnabled = false;
-                sizeYTB.Text = "";
             }
         }
 

@@ -26,6 +26,8 @@ namespace TobiiTest
                     return new GoogleTranslator(src, targ);
                 case "Microsoft":
                     return new MicrosoftTranslator(src, targ);
+                case "Yandex":
+                    return new YandexTranslator(src, targ);
                 default:
                     throw new ArgumentException("unknown translator: " + translator);
             }

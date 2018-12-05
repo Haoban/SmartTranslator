@@ -92,8 +92,9 @@ namespace TobiiTest
             try
             {
                 // Download translation
-                string url = string.Format("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
-                                            GoogleTranslator.LanguageEnumToIdentifier(SourceLanguage),
+                //string url = string.Format("https://translate.googleapis.com/translate_a/single?client=webclient&sl={0}&tl={1}&dt=t&q={2}",
+                string url = string.Format("https://translate.google.com/translate_a/single?client=webapp&sl={0}&tl={0}&hl=ru&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=0&tsel=0&kc=3&tk=886167.724685&q={2}",
+                GoogleTranslator.LanguageEnumToIdentifier(SourceLanguage),
                                             GoogleTranslator.LanguageEnumToIdentifier(TargetLanguage),
                                             HttpUtility.UrlEncode(sourceText));
                 string outputFile = Path.GetTempFileName();

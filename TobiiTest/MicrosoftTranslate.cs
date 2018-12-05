@@ -20,7 +20,7 @@ namespace TobiiTest
             return host + path + "&from=" + from + "&to=" + to;
         }
 
-        private static readonly string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("MGRjYjE1NWU0NjA5NGEzYThiZTBiYTgxNzEwZTRmMDY="));
+        private static readonly string key = Encoding.UTF8.GetString(System.Convert.FromBase64String("NmQxODFmM2YwNTYwNGRmMmFkMDNmYTIxZWRmOTRkNjM="));
 
         // Language names like in Dictionary below
         public static Dictionary<string,string> Languages
@@ -120,16 +120,30 @@ namespace TobiiTest
             using (var request = new HttpRequestMessage())
             {
                 request.Method = HttpMethod.Post;
+                Console.WriteLine("MST: URI: " + GetURI());
                 request.RequestUri = new Uri(GetURI());
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                Console.WriteLine("MST: key: " + key);
                 request.Headers.Add("Ocp-Apim-Subscription-Key", key);
+
+                Console.WriteLine("MST: request: " + request);
 
                 var response = client.SendAsync(request).Result;
                 var responseBody = response.Content.ReadAsStringAsync().Result;
 
                 Console.WriteLine("MST: responce: " + responseBody);
-                var jarr = JArray.Parse(responseBody);
-                return jarr[0]["translations"][0]["text"].ToString();
+                
+                var jt = JToken.Parse(responseBody);
+                if (jt is JArray)
+                {
+                    return jt[0]["translations"][0]["text"].ToString();
+                }
+                else //if (jt is JObject)
+                {
+                    throw new Exception("MS API Error.\nCode: " + jt["error"]["code"] + "\nMessage: " + jt["error"]["message"]);
+                }
+                //return jarr[0]["translations"][0]["text"].ToString();
+
             }
         }
 
