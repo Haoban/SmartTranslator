@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TobiiTest
 {
-    class YandexTranslator : Translator
+    public class YandexTranslator : Translator
     {
         private static readonly string key = "trnsl.1.1.20181202T130022Z.e346b952c881526f.7cf20535988bdcee6ba84908bad44cd290d8bbc4";
 
@@ -150,9 +150,10 @@ namespace TobiiTest
                 var jobj = JObject.Parse(responseBody);
                 if (jobj["code"].ToObject<int>() != 200)
                 {
-                    Console.WriteLine("YT: error in responce, code: " + jobj["code"].ToObject<int>());
-                    Console.WriteLine("YT: error in responce, message: " + jobj["message"].ToString());
-                    return "";
+                    throw new Exception("Yandex API Error.\nCode: " + jobj["code"] + "\nMessage: " + jobj["message"]);
+                    //Console.WriteLine("YT: error in responce, code: " + jobj["code"].ToObject<int>());
+                    //Console.WriteLine("YT: error in responce, message: " + jobj["message"].ToString());
+                    //return "";
                 }
                 else
                 {

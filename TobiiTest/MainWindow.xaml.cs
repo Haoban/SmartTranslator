@@ -167,19 +167,28 @@ namespace TobiiTest
                     srcTextTB.Text = text;
                     
                     translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);
-                    var tl = translator.Translate(text);
-                    Console.WriteLine("MW: translated text: " + tl);
-
-                    // Debug
-                    /*
-                    var gt = (GoogleTranslator)translator;
-                    if (gt.Error != null)
+                    try
                     {
-                        Console.WriteLine(gt.Error.Message);
-                        Console.WriteLine(gt.Error.StackTrace);
+                        var tl = translator.Translate(text);
+                        if (translator is GoogleTranslator)
+                        {
+                            var gt = (GoogleTranslator)translator;
+                            if (gt.Error != null)
+                            {
+                                MessageBox.Show("Google translate error.\nMessage: " + gt.Error.Message + "\nStack trace: " + gt.Error.StackTrace, "GT Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        } 
+                        Console.WriteLine("MW: translated text: " + tl);
+                        targTextTB.Text = tl;
                     }
-                    */   
-                    targTextTB.Text = tl;
+                    catch (Newtonsoft.Json.JsonReaderException ex)
+                    {
+                        MessageBox.Show("Error while parsing json: " + ex.Message + "\n", "JSON Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
         }

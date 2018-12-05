@@ -56,8 +56,11 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="GoogleTranslatorTests.cs" />
+    <Compile Include="MicrosoftTranslatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenshotUtilTests.cs" />
+    <Compile Include="YandexTranslatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
