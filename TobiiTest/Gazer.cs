@@ -9,7 +9,7 @@ using Tobii.Interaction;
 
 namespace TobiiTest
 {
-    class Gazer
+    public class Gazer
     {
         public bool State
         {

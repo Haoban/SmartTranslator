@@ -93,17 +93,21 @@ namespace TobiiTest
             {
                 // Download translation
                 //string url = string.Format("https://translate.googleapis.com/translate_a/single?client=webclient&sl={0}&tl={1}&dt=t&q={2}",
-                string url = string.Format("https://translate.google.com/translate_a/single?client=webapp&sl={0}&tl={0}&hl=ru&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=0&tsel=0&kc=3&tk=886167.724685&q={2}",
-                GoogleTranslator.LanguageEnumToIdentifier(SourceLanguage),
+                string url = string.Format("https://translate.google.com/translate_a/single?client=webapp&sl={0}&tl={1}&hl=ru&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=0&tsel=0&kc=3&tk=886167.724685&q={2}",
+                                            GoogleTranslator.LanguageEnumToIdentifier(SourceLanguage),
                                             GoogleTranslator.LanguageEnumToIdentifier(TargetLanguage),
                                             HttpUtility.UrlEncode(sourceText));
+              
                 string outputFile = Path.GetTempFileName();
+                
                 using (WebClient wc = new WebClient())
                 {
-                    wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");
+                    wc.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36");                   
                     wc.DownloadFile(url, outputFile);
                     // DEBUG
                     Console.WriteLine("GT: url string: " + url);
+                    //DEBUG
+                    Console.WriteLine("110:break");
                     //wc.DownloadFile(url, System.IO.Path.Combine(@"D:\Desktop", "responce"));
                 }
 
