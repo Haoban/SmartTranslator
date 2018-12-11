@@ -163,7 +163,7 @@ namespace TobiiTest
                             throw new ArgumentException("No such screenshot size: " + ssize);
                     }
                     var screen = ScreenshotUtil.TakeScreen(coords.Item1, coords.Item2, size);
-                    var text = OCRUtil.RecognizeImage(screen);
+                    var text = OCRUtil.RecognizeImage(screen, Int32.Parse(pref.Get("magnifyFactor")));
                     srcTextTB.Text = text;
                     
                     translator = Translator.Create(pref.Get("translator"), SourceLanguage, TargetLanguage);

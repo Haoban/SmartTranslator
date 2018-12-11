@@ -100,15 +100,21 @@ namespace TobiiTest
             return destImage;
         }
 
-        public static void RecognizeImage(string path)
+        public static string RecognizeImage(string path, int magnify)
         {
             var bm = Bitmap.FromFile(path);
-            var abc = MagnifyImage(Bitmap.FromFile(path), 5); // 4 or 5 should be enough... customizable?
-            RecognizeImage((Bitmap)abc);
+            var magnified = MagnifyImage(Bitmap.FromFile(path), magnify);
+            return RecognizeImage((Bitmap)magnified);
+        }
+
+        public static string RecognizeImage(Bitmap image, int magnify)
+        {
+            var magnified = MagnifyImage(image, magnify);
+            return RecognizeImage((Bitmap)magnified);
         }
 
         // From: https://github.com/charlesw/tesseract-samples/blob/master/src/Tesseract.ConsoleDemo/Program.cs
-        public static string RecognizeImage(Bitmap abc)
+        public static string RecognizeImage(Bitmap image)
         {
             //var testImagePath = "./phototest.tif";
             /*
@@ -125,7 +131,7 @@ namespace TobiiTest
                 {
                     //using (var img = Pix.LoadFromFile(testImagePath))
                     //engine.SetVariable("textord_min_linesize", 3);
-                    using (var img = PixConverter.ToPix(abc))
+                    using (var img = PixConverter.ToPix(image))
                     {
                         using (var page = engine.Process(img))
                         {
