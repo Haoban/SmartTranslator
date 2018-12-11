@@ -82,28 +82,32 @@ namespace TobiiTest
             });
             targetLanguageCB.SelectedIndex = 0;
             
-            switch (pref.Get("translator"))
+            //switch (pref.Get("translator"))
+            //{
+            //    case "Google":
+            //        foreach (string lang in GoogleTranslator.Langs)
+            //        {
+            //            targetLanguageCB.Items.Add(lang);
+            //        }
+            //        break;
+            //    case "Microsoft":
+            //        foreach (string lang in MicrosoftTranslator.Languages.Keys)
+            //        {
+            //            targetLanguageCB.Items.Add(lang);
+            //        }
+            //        break;
+            //    case "Yandex":
+            //        foreach (string lang in YandexTranslator.Languages.Keys)
+            //        {
+            //            targetLanguageCB.Items.Add(lang);
+            //        }
+            //        break;
+            //    default:
+            //        throw new ArgumentException("Unknown translator: " + pref.Get("translator"));
+            //}
+            foreach (string lang in Translator.Languages(pref.Get("translator")).Keys)
             {
-                case "Google":
-                    foreach (string lang in GoogleTranslator.Languages)
-                    {
-                        targetLanguageCB.Items.Add(lang);
-                    }
-                    break;
-                case "Microsoft":
-                    foreach (string lang in MicrosoftTranslator.Languages.Keys)
-                    {
-                        targetLanguageCB.Items.Add(lang);
-                    }
-                    break;
-                case "Yandex":
-                    foreach (string lang in YandexTranslator.Languages.Keys)
-                    {
-                        targetLanguageCB.Items.Add(lang);
-                    }
-                    break;
-                default:
-                    throw new ArgumentException("Unknown translator: " + pref.Get("translator"));
+                targetLanguageCB.Items.Add(lang);
             }
             targetLanguageCB.SelectedIndex = 0;
         }
