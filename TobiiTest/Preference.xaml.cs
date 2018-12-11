@@ -55,8 +55,9 @@ namespace TobiiTest
 
             setKey.SelectedIndex = setKey.Items.IndexOf(prefs.Get("key"));
             setKey.SelectionChanged += SetKey_SelectionChanged;
-            magnify.IsEnabled = true;
+            //magnify.IsEnabled = true;
             magnify.Text = prefs.Get("magnifyFactor");
+            magnify.TextChanged += MagnifyFactor_TextChanged;
         }
 
         private void InitComboBoxes()
@@ -108,7 +109,7 @@ namespace TobiiTest
 
         private void Window_Closed(object sender, EventArgs e)
         {
-
+            Console.WriteLine("Closing, prefs: " + prefs.Get("magnifyFactor"));
         }
 
         private void SizeXTB_TextChanged(object sender, TextChangedEventArgs e)
