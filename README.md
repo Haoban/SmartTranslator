@@ -1,4 +1,5 @@
 
 # SmartTranslator
 A smart translator based on eye tracker.
-By using Google API, Microsoft API and Yagoo API.
+
+By using Google API, Microsoft API and Yandex API.
