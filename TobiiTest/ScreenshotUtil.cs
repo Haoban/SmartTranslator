@@ -9,38 +9,49 @@ using System.Drawing.Imaging;
 
 namespace TobiiTest
 {
-    class ScreenshotUtil
+    public class ScreenshotUtil
     {
-        public static Bitmap TakeScreen(double x, double y, double timestamp)
+        // TODO: pass size of screenshot as parameter
+        public static Bitmap TakeScreen(double x, double y, Tuple<int, int> ssize)
         {
+            int wid = ssize.Item1;
+            int hei = ssize.Item2;
+
             //Create a new bitmap.
-            var bmpScreenshot = new Bitmap(225,
-                                           225,
+            var bmpScreenshot = new Bitmap(wid,
+                                           hei,
                                            PixelFormat.Format32bppArgb);
 
             // Create a graphics object from the bitmap.
             var gfxScreenshot = Graphics.FromImage(bmpScreenshot);
 
-            // Take the screenshot from the upper left corner to the right bottom corner.
-            /*
-            gfxScreenshot.CopyFromScreen(Screen.PrimaryScreen.Bounds.X,
-                                        Screen.PrimaryScreen.Bounds.Y,
+            int ix = (int)Math.Round(x); int iy = (int)Math.Round(y);
+
+            int screenw = Screen.PrimaryScreen.Bounds.Size.Width;
+            int screenh = Screen.PrimaryScreen.Bounds.Size.Height;
+
+            // Validation of top left corner
+            if (ix - wid / 2 < 0)
+                ix = 0;
+            else if (ix + wid / 2 > screenw)
+                ix = screenw - wid;
+            else
+                ix = ix - wid / 2;
+
+            if (iy - hei / 2 < 0)
+                iy = 0;
+            else if (iy + hei / 2 > screenh)
+                iy = screenh - hei;
+            else
+                iy = iy - hei / 2;
+
+            gfxScreenshot.CopyFromScreen(ix,
+                                        iy,
                                         0,
                                         0,
-                                        Screen.PrimaryScreen.Bounds.Size,
+                                        new Size(wid,hei),
                                         CopyPixelOperation.SourceCopy);
 
-            */
-            int roundx = (int)Math.Round(x); int roundy = (int)Math.Round(y);
-
-            gfxScreenshot.CopyFromScreen(roundx - 112,
-                                        roundy - 112,
-                                        0,
-                                        0,
-                                        new Size(225,255),
-                                        CopyPixelOperation.SourceCopy);
-            // Save the screenshot to the specified path that the user has chosen.
-            bmpScreenshot.Save("Screen" + timestamp.ToString() + ".png", ImageFormat.Png);
             return bmpScreenshot;
         }
     }

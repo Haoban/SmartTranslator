@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,53 @@ using Tesseract;
 
 namespace TobiiTest
 {
-    class OCRUtil
+    public class OCRUtil
     {
+
+        public static readonly Dictionary<string, string> OCRAllLangs = new Dictionary<string, string>
+        {
+            // Language list for OCR here
+            // Taken from: https://github.com/tesseract-ocr/tessdata/tree/3.04.00
+            { "chi_sim", "Chinese Simplified" },
+            { "chi_tra", "Chinese Traditional" },          
+            { "eng", "English" },
+            { "fin", "Finnish" },
+            { "fra", "French" },
+            { "deu", "German" },
+            { "kat", "Georgian" },
+            { "kat_old", "Geogian Old" },
+            { "gle", "Irish" },
+            { "ita", "Italian" },
+            { "ita_old", "Italian Old" },
+            { "jpn", "Japanese" },            
+            { "kor", "Korean" },          
+            { "msa", "Malay" },
+            { "mal", "Malayalam" },
+            { "nep", "Nepali" },
+            { "nor", "Norwegian" },
+            { "pol", "Polish" },
+            { "ron", "Romanian" },
+            { "rus", "Russian" },
+            { "spa", "Spanish" },
+            { "spa_old", "Spanish Old" },
+            { "swe", "Swedish" },
+            { "tha", "Thai" },
+            { "tur", "Turkish" },
+
+        };
+
+        public static Dictionary<string, string> AvailableOCRLangs()
+        {
+            var dict = new Dictionary<string, string>();
+            foreach (string file in Directory.GetFiles("./tessdata"))
+            {
+                var name = Path.GetFileNameWithoutExtension(file);
+                OCRAllLangs.TryGetValue(name, out string lang);
+                dict.Add(name, lang);
+            }
+            return dict;
+        }
+
         // Magnifies image by factor
         public static Image MagnifyImage(Image image, int factor)
         {
@@ -54,15 +100,21 @@ namespace TobiiTest
             return destImage;
         }
 
-        public static void RecognizeImage(string path)
+        public static string RecognizeImage(string path, int magnify)
         {
             var bm = Bitmap.FromFile(path);
-            var abc = MagnifyImage(Bitmap.FromFile(path), 5); // 4 or 5 should be enough... customizable?
-            RecognizeImage((Bitmap)abc);
+            var magnified = MagnifyImage(Bitmap.FromFile(path), magnify);
+            return RecognizeImage((Bitmap)magnified);
+        }
+
+        public static string RecognizeImage(Bitmap image, int magnify)
+        {
+            var magnified = MagnifyImage(image, magnify);
+            return RecognizeImage((Bitmap)magnified);
         }
 
         // From: https://github.com/charlesw/tesseract-samples/blob/master/src/Tesseract.ConsoleDemo/Program.cs
-        public static string RecognizeImage(Bitmap abc)
+        public static string RecognizeImage(Bitmap image)
         {
             //var testImagePath = "./phototest.tif";
             /*
@@ -71,7 +123,7 @@ namespace TobiiTest
                 testImagePath = args[0];
             }
             */
-            
+
             try
             {
                 string text;
@@ -79,7 +131,7 @@ namespace TobiiTest
                 {
                     //using (var img = Pix.LoadFromFile(testImagePath))
                     //engine.SetVariable("textord_min_linesize", 3);
-                    using (var img = PixConverter.ToPix(abc))
+                    using (var img = PixConverter.ToPix(image))
                     {
                         using (var page = engine.Process(img))
                         {
@@ -139,13 +191,10 @@ namespace TobiiTest
                             }            */
                         }
                     }
-                    
+
                 }
                 //return text;
             }
-     
-           
-
             catch (Exception e)
             {
                 Trace.TraceError(e.ToString());
@@ -154,7 +203,7 @@ namespace TobiiTest
                 Console.WriteLine(e.ToString());
                 return "";
             }
-
         }
+
     }
 }
